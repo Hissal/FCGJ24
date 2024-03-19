@@ -1,0 +1,954 @@
+fileFormatVersion: 2
+guid: a116ca62f74354debbef0e037aba5dc0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Shark-swim_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3584
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb10ad2f2e379467a85c5c30c9d90535
+      internalID: 1906626507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_1
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 3584
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1137eb1515eba4928a304adfb54f33e7
+      internalID: -2099864833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_2
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 3584
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a426f4f0252b44e4a9bcdf27d12fd02
+      internalID: -1711770712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_3
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 3584
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79575c001e9c48af8b2cd3a1444551b
+      internalID: 225656838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_4
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 3584
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f5e2c43ac69646efaab7a75473fb237
+      internalID: 1847435936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5538e22718685471faca202997705a61
+      internalID: 387394378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_6
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 3072
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d241b3b19be95448797dc38520621cc1
+      internalID: 1671371129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_7
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 3072
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b168fad596b454cad006cb0554e0ec
+      internalID: -2127035961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_8
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 3072
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb3bb6d72d0a47e1b12af40e1aa3bcf
+      internalID: -1081786791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_9
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 3072
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969ee08bfc20a493a92faaf10e725c27
+      internalID: 1097695944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2560
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3b4df1086a944c6ac937303bdcfb49
+      internalID: 2121331344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_11
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 2560
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceeaae721602d44e1a0f35dca6b3cbb6
+      internalID: -420189294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_12
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 2560
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cdb052b8a1df4e00b3c3026d7baeaea
+      internalID: 816525702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_13
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 2560
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fe35aca2e1724dbd9391260dd76d5f3
+      internalID: -1198165792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_14
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 2560
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a5d2c8942bd43999d0f3d745528065
+      internalID: -316151205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6c6c056c44d14431932a2119c900eb6
+      internalID: -1194257070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_16
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 2048
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e8d6674aed548ad9e359e0a0a55641
+      internalID: -1407216193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_17
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 2048
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3892ae540458843afa72a4ae37599697
+      internalID: 1077989239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_18
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 2048
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e0da317227ca4750a8a7df10bfd7a5e
+      internalID: 601283074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_19
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 2048
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2251b431ece7c45e981c8096884eb032
+      internalID: 1747707009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e71f4f989994fc8b209bb20b4d5ea4
+      internalID: 1383538868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_21
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1536
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f9dfb971a20c49a38daf05e05b0c448
+      internalID: 1326705472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_22
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1536
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04a99d33b97fb405e9b8d2722ce0b09b
+      internalID: -1890164401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_23
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 1536
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c0531c00d12c4fd18381109e91a809c
+      internalID: -931824408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_24
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 1536
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93c73c5c419c54f729661cd2db7a0515
+      internalID: -2046561570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce5bbe8dfc04492f94705a3814dc6b9
+      internalID: 2068017467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_26
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 1024
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc123ea750474167baa00a17e2b269a
+      internalID: 1087051863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_27
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 1024
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdb9a8f7468844560aa97db0db8f02b3
+      internalID: -118554155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_28
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 1024
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0dfdbd3e09eb428ea63a65f3c8f7e6a
+      internalID: 1221566610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_29
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 1024
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e3b4798a88f4cc5b2a5ce5560b19d0
+      internalID: 707466392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9abff1288afe41e283ad6e332458378
+      internalID: -693611494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_31
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 512
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13f1793821e049c9bdc30f76a9ca90c
+      internalID: 1899356549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_32
+      rect:
+        serializedVersion: 2
+        x: 1614
+        y: 512
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d379838311374598bdf2fa0805e9cfe
+      internalID: -53450689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_33
+      rect:
+        serializedVersion: 2
+        x: 2421
+        y: 512
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb9fb964ef166429083c51bdf29318bd
+      internalID: 1572613626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_34
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 512
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30737ab04604d4dc69a02abb44f5ef7b
+      internalID: -1565955079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb4592d567d1447ab2902132d6a83bc
+      internalID: -1329254803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shark-swim_36
+      rect:
+        serializedVersion: 2
+        x: 807
+        y: 0
+        width: 807
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0ce3e3f605fa4b049d0e116954b82dc
+      internalID: -616050439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Shark-swim_0: 1906626507
+      Shark-swim_1: -2099864833
+      Shark-swim_10: 2121331344
+      Shark-swim_11: -420189294
+      Shark-swim_12: 816525702
+      Shark-swim_13: -1198165792
+      Shark-swim_14: -316151205
+      Shark-swim_15: -1194257070
+      Shark-swim_16: -1407216193
+      Shark-swim_17: 1077989239
+      Shark-swim_18: 601283074
+      Shark-swim_19: 1747707009
+      Shark-swim_2: -1711770712
+      Shark-swim_20: 1383538868
+      Shark-swim_21: 1326705472
+      Shark-swim_22: -1890164401
+      Shark-swim_23: -931824408
+      Shark-swim_24: -2046561570
+      Shark-swim_25: 2068017467
+      Shark-swim_26: 1087051863
+      Shark-swim_27: -118554155
+      Shark-swim_28: 1221566610
+      Shark-swim_29: 707466392
+      Shark-swim_3: 225656838
+      Shark-swim_30: -693611494
+      Shark-swim_31: 1899356549
+      Shark-swim_32: -53450689
+      Shark-swim_33: 1572613626
+      Shark-swim_34: -1565955079
+      Shark-swim_35: -1329254803
+      Shark-swim_36: -616050439
+      Shark-swim_4: 1847435936
+      Shark-swim_5: 387394378
+      Shark-swim_6: 1671371129
+      Shark-swim_7: -2127035961
+      Shark-swim_8: -1081786791
+      Shark-swim_9: 1097695944
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
