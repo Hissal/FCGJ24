@@ -7,25 +7,36 @@ public class Fish : MonoBehaviour
     enum FishState { Idle, Chasing }
     private FishState state;
 
+    [Header("Attacks")]
+    [SerializeField] protected Collider2D attackCollider;
+    [SerializeField] protected float attackRange = 2f;
+    [SerializeField] protected float attackDamage = 1f;
+    [SerializeField] protected float attackInterval = 3f;
+
+    [Header("Movement")]
     [SerializeField] protected float maxSwimSpeed = 4f;
     [SerializeField] protected float startingSwimSpeed = 0.5f;
     [SerializeField] protected float acceleration = 0.034f;
     protected float swimSpeed;
+
+    [Header("Player Detection / Chasing")]
     [SerializeField] private Transform detectionCircleCenter;
     [SerializeField] protected float detectionRange = 7.5f;
     [SerializeField] protected float chasingRange = 10f;
+    [SerializeField] private float pointToMoveToDistFromWalls = 2f;
+
+    [Header("Exhaustion while chasing")]
     [SerializeField] protected float exhaustInSeconds = 7.5f;
     [SerializeField] protected float exhaustedForSeconds = 4f;
     [SerializeField] protected float exhaustMultiplier = 0.99f;
     [SerializeField] protected float minSpeedWhileExhausted = 2f;
     protected float currentExhaustAmount = 1;
 
-    [SerializeField] private float pointToMoveToDistFromWalls = 2f;
-
     protected float groundDetectionRange;
 
     [SerializeField] LayerMask playerLayer;
     [SerializeField] LayerMask groundLayer;
+    ContactFilter2D playerFilter;
 
     protected Rigidbody2D rb;
     protected Transform player;
@@ -52,6 +63,8 @@ public class Fish : MonoBehaviour
 
         currentExhaustAmount = 1f;
         swimSpeed = startingSwimSpeed;
+
+        playerFilter.SetLayerMask(playerLayer);
     }
 
     protected virtual void Update()
@@ -79,6 +92,18 @@ public class Fish : MonoBehaviour
         {
             currentExhaustAmount *= exhaustMultiplier;
             currentExhaustAmount = Mathf.Clamp(currentExhaustAmount, 0f, 1f);
+        }
+    }
+
+    protected void DoAttack()
+    {
+        //Play Attack Animation
+
+        List<Collider2D> resultList = new List<Collider2D>();
+        Physics2D.OverlapCollider(attackCollider, playerFilter, resultList);
+        foreach (var result in resultList)
+        {
+            result.GetComponent<IDamageable>()?.TakeDamage(attackDamage);
         }
     }
 

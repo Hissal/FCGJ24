@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDamageable
 {
     [Header("Movement")]
     [SerializeField] private float softMaxVelocity = 5f;
@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private bool regeningSprint;
     private Timer sprintRegenTimer;
 
+    [Header("Health")]
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
+
     private Vector2 movementInput;
     private Vector2 smoothedMovementInput;
     private Vector2 movementInputSmoothVelocity;
@@ -29,11 +33,14 @@ public class PlayerController : MonoBehaviour
     private float inputY;
 
     private Rigidbody2D rb;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         sprintRegenTimer = new Timer(this, (float totalTime) => StartCoroutine(RegenSprint()));
+
+        currentHealth = maxHealth;
     }
 
     private IEnumerator RegenSprint()
@@ -55,6 +62,9 @@ public class PlayerController : MonoBehaviour
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
         movementInput = new Vector2(inputX, inputY);
+
+        if (movementInput == Vector2.zero) audioSource.volume = 0f;
+        else audioSource.volume = 1f;
 
         CheckSprint();
         //print(sprintLeft);
@@ -112,5 +122,14 @@ public class PlayerController : MonoBehaviour
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed);
 
         rb.MoveRotation(rotation);
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+        if (currentHealth <= 0)
+        {
+            // Die
+        }
     }
 }
