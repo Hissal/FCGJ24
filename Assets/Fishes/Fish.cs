@@ -17,6 +17,7 @@ public class Fish : MonoBehaviour
     [SerializeField] protected Collider2D attackCollider;
     [SerializeField] protected float attackStartRange = 4f;
     [SerializeField] protected float attackDamage = 1f;
+    [SerializeField] protected float attackKnockBackForce = 4f;
     [SerializeField] protected float attackInterval = 3f;
     [SerializeField] protected float speedBoostWhileMouthOpen = 1f;
 
@@ -79,7 +80,7 @@ public class Fish : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Physics2D.OverlapCircle(detectionCircleCenter.position, detectionRange, playerLayer) && state != FishState.Chasing && !GroundBetweenPlayer(detectionRange))
+        if (Physics2D.OverlapCircle(detectionCircleCenter.position, detectionRange, playerLayer) && state != FishState.Chasing && !GroundBetweenPlayerAndPos(detectionCircleCenter.position, detectionRange))
         {
             StartChasingPlayer();
         }
@@ -124,7 +125,7 @@ public class Fish : MonoBehaviour
         attackCollider.OverlapCollider(playerFilter, resultList);
         foreach (var result in resultList)
         {
-            result.GetComponent<IDamageable>()?.TakeDamage(attackDamage);
+            result.GetComponent<IDamageable>()?.TakeDamage(attackDamage, rb.velocity.normalized * attackKnockBackForce);
         }
     }
 
@@ -262,7 +263,7 @@ public class Fish : MonoBehaviour
     }
     protected virtual void ResetExhaust()
     {
-        swimSpeed = startingSwimSpeed;
+        swimSpeed = minSpeedWhileExhausted;
         exhausted = false;
         currentExhaustAmount = 1f;
         if (state == FishState.Chasing) exhaustTimer.StartTimer(exhaustInSeconds);
@@ -278,8 +279,12 @@ public class Fish : MonoBehaviour
 
     protected bool GroundBetweenPlayer(float range)
     {
-        RaycastHit2D hitPlayer = Physics2D.Raycast(transform.position, (player.position - transform.position).normalized, range, playerLayer);
-        RaycastHit2D hitGround = Physics2D.Raycast(transform.position, (player.position - transform.position).normalized, range, groundLayer);
+        return GroundBetweenPlayerAndPos(transform.position, range);
+    }
+    protected bool GroundBetweenPlayerAndPos(Vector2 position, float range)
+    {
+        RaycastHit2D hitPlayer = Physics2D.Raycast(position, ((Vector2)player.position - position).normalized, range, playerLayer);
+        RaycastHit2D hitGround = Physics2D.Raycast(position, ((Vector2)player.position - position).normalized, range, groundLayer);
 
         if (hitGround.collider != null) return true;
         else if (hitPlayer.collider != null) return false;

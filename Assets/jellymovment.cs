@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class jellymovment : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    [SerializeField] float forceAmount = 4f;
+    [Header("Hits")]
+    [SerializeField] float damageAmount = 2f;
+    [SerializeField] float knockBackForceAmount = 4f;
+
+    [Header("Bobbing")]
+    [SerializeField] private float bobCooldown = 0.25f;
+    [SerializeField] float bobForceAmount = 4f;
 
     private Vector2 startPos;
-
-    [SerializeField] private float bobCooldown = 0.25f;
+    private Rigidbody2D rb;
 
     private void Start()
     {
@@ -22,10 +26,17 @@ public class jellymovment : MonoBehaviour
     {
         while (true)
         {
-            print("Added force");
-            rb.AddForce(Vector2.up * forceAmount, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * bobForceAmount, ForceMode2D.Impulse);
             yield return new WaitWhile(() => transform.position.y > startPos.y);
             yield return new WaitForSeconds(bobCooldown);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<IDamageable>() == null) return;
+
+        Vector2 knockBackDirection = (collision.transform.position - transform.position).normalized;
+        collision.GetComponent<IDamageable>().TakeDamage(damageAmount, knockBackDirection * knockBackForceAmount);
     }
 }

@@ -160,9 +160,9 @@ MonoBehaviour:
   attackAnimation: {fileID: 7400000, guid: c2d966027658643f487f84ce5feb4bd8, type: 2}
   swimAnimation: {fileID: 7400000, guid: 3c4aebebc3f0b45adbadc1c08d18c5ec, type: 2}
   attackCollider: {fileID: 2209552811741676531}
-  attackStartRange: 4.5
-  attackEndRange: 2.25
-  attackDamage: 1
+  attackStartRange: 5.5
+  attackDamage: 2
+  attackKnockBackForce: 12
   attackInterval: 3
   speedBoostWhileMouthOpen: 3.5
   maxSwimSpeed: 4

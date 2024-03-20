@@ -34,12 +34,19 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private Rigidbody2D rb;
     private AudioSource audioSource;
+    private SpriteRenderer rend;
+
+    private bool stunned;
+    private Timer stunTimer;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+        rend = GetComponentInChildren<SpriteRenderer>();
+
         sprintRegenTimer = new Timer(this, (float totalTime) => StartCoroutine(RegenSprint()));
+        stunTimer = new Timer(this, (float totalTime) => stunned = false);
 
         currentHealth = maxHealth;
     }
@@ -60,6 +67,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
+        if (stunned) return;
+
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
         movementInput = new Vector2(inputX, inputY);
@@ -92,6 +101,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void FixedUpdate()
     {
+        if (stunned) return;
+
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
         if (movementInput != Vector2.zero) Move();
         if (movementInput != Vector2.zero) RotateInDirectionOfInput();
@@ -125,8 +136,16 @@ public class PlayerController : MonoBehaviour, IDamageable
         rb.MoveRotation(rotation);
     }
 
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount, Vector2 knockBackForce)
     {
+        StartCoroutine(FlashRed());
+
+        stunned = true;
+        stunTimer.StartTimer(0.2f);
+
+        rb.velocity = Vector2.zero;
+        rb.AddForce(knockBackForce, ForceMode2D.Impulse);
+
         currentHealth -= damageAmount;
 
         print("Took " + damageAmount + " Damage");
@@ -135,6 +154,13 @@ public class PlayerController : MonoBehaviour, IDamageable
             // Die
             print("Died");
             return;
+        }
+
+        IEnumerator FlashRed()
+        {
+            rend.color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            rend.color = Color.white;
         }
     }
 }
