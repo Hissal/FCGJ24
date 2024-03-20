@@ -162,7 +162,9 @@ MonoBehaviour:
   sprintDrainAmount: 1
   regenSprintAfterSeconds: 2
   sprintRegenAmount: 50
-  maxHealth: 5
+  breathBar: {fileID: 0}
+  maxBreath: 100
+  breathLostPerSecond: 1
 --- !u!50 &7096695408908168223
 Rigidbody2D:
   serializedVersion: 4

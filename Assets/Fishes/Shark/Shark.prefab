@@ -161,21 +161,21 @@ MonoBehaviour:
   swimAnimation: {fileID: 7400000, guid: 3c4aebebc3f0b45adbadc1c08d18c5ec, type: 2}
   attackCollider: {fileID: 2209552811741676531}
   attackStartRange: 5.5
-  attackDamage: 2
+  attackDamage: 8
   attackKnockBackForce: 12
   attackInterval: 3
   speedBoostWhileMouthOpen: 3.5
-  maxSwimSpeed: 4
+  maxSwimSpeed: 4.5
   startingSwimSpeed: 0.5
   acceleration: 0.034
   detectionCircleCenter: {fileID: 5143267818923168242}
-  detectionRange: 10
+  detectionRange: 12
   chasingRange: 20
   pointToMoveToDistFromWalls: 2
   exhaustInSeconds: 15
-  exhaustedForSeconds: 5
-  exhaustMultiplier: 0.999
-  minSpeedWhileExhausted: 2
+  exhaustedForSeconds: 3
+  exhaustMultiplier: 0.995
+  minSpeedWhileExhausted: 1
   playerLayer:
     serializedVersion: 2
     m_Bits: 256

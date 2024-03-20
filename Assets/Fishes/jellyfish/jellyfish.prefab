@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3eac50824664b5e9df1256661bed94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 1
-  knockBackForceAmount: 10
+  damageAmount: 3
+  knockBackForceAmount: 8
   bobCooldown: 1
   bobForceAmount: 4
 --- !u!95 &3975136513231892947
