@@ -128,10 +128,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
+
+        print("Took " + damageAmount + " Damage");
         if (currentHealth <= 0)
         {
             // Die
-            print("Took " + damageAmount + " Damage");
+            print("Died");
+            return;
         }
     }
 }

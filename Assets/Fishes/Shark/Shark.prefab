@@ -141,6 +141,7 @@ Transform:
   m_Children:
   - {fileID: 5143267818923168242}
   - {fileID: 8377632161137347051}
+  - {fileID: 2481199578348326075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2681848686663079003
@@ -155,17 +156,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4631735eb68a4f178528368e8cecb2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 2083510353149737543}
+  attackAnimation: {fileID: 7400000, guid: c2d966027658643f487f84ce5feb4bd8, type: 2}
+  swimAnimation: {fileID: 7400000, guid: 3c4aebebc3f0b45adbadc1c08d18c5ec, type: 2}
+  attackCollider: {fileID: 2209552811741676531}
+  attackStartRange: 4.5
+  attackEndRange: 2.25
+  attackDamage: 1
+  attackInterval: 3
+  speedBoostWhileMouthOpen: 3.5
   maxSwimSpeed: 4
   startingSwimSpeed: 0.5
   acceleration: 0.034
   detectionCircleCenter: {fileID: 5143267818923168242}
   detectionRange: 10
-  chasingRange: 13
-  exhaustInSeconds: 7.5
-  exhaustedForSeconds: 5
-  exhaustMultiplier: 0.99
-  minSpeedWhileExhausted: 2
+  chasingRange: 20
   pointToMoveToDistFromWalls: 2
+  exhaustInSeconds: 15
+  exhaustedForSeconds: 5
+  exhaustMultiplier: 0.999
+  minSpeedWhileExhausted: 2
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -269,6 +279,73 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.9
+--- !u!1 &3093156523965440998
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2481199578348326075}
+  - component: {fileID: 2209552811741676531}
+  m_Layer: 0
+  m_Name: Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2481199578348326075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093156523965440998}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7662323621481931862}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2209552811741676531
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093156523965440998}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!1 &3601853492932086832
 GameObject:
   m_ObjectHideFlags: 0

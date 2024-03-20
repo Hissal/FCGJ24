@@ -7,16 +7,18 @@ public class Fish : MonoBehaviour
     enum FishState { Idle, Chasing }
     private FishState state;
 
+    [SerializeField] protected Animator anim;
+
     [Header("Animations")]
-    [SerializeField] protected Animation attackAnimation;
-    [SerializeField] protected Animation swimAnimation;
+    [SerializeField] protected AnimationClip attackAnimation;
+    [SerializeField] protected AnimationClip swimAnimation;
 
     [Header("Attacks")]
     [SerializeField] protected Collider2D attackCollider;
     [SerializeField] protected float attackStartRange = 4f;
-    [SerializeField] protected float attackEndRange = 1f;
     [SerializeField] protected float attackDamage = 1f;
     [SerializeField] protected float attackInterval = 3f;
+    [SerializeField] protected float speedBoostWhileMouthOpen = 1f;
 
     [Header("Movement")]
     [SerializeField] protected float maxSwimSpeed = 4f;
@@ -41,11 +43,10 @@ public class Fish : MonoBehaviour
 
     [SerializeField] LayerMask playerLayer;
     [SerializeField] LayerMask groundLayer;
-    ContactFilter2D playerFilter;
+    private ContactFilter2D playerFilter;
 
     protected Rigidbody2D rb;
     protected Transform player;
-    protected Animator anim;
 
     protected Timer exhaustTimer;
     protected Timer resetExhaustTimer;
@@ -63,6 +64,7 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
         player = GameManager.Instance.player;
 
         exhaustTimer = new Timer(this, (float totalTime) => Exhaust());
@@ -105,16 +107,21 @@ public class Fish : MonoBehaviour
 
     protected virtual void OpenMouth()
     {
-        anim.PlayInFixedTime(attackAnimation.name, 0, 1f);
+        print("Open Mouth");
+        anim.Play(attackAnimation.name, 0, 0.5f);
         anim.speed = 0;
+        isMouthOpen = true;
     }
 
     protected void CloseMouth()
     {
+        exhaustTimer.FinishTimer();
+        print("Close Mouth");
+        isMouthOpen = false;
         anim.speed = 1f;
         anim.Play(swimAnimation.name);
         List<Collider2D> resultList = new List<Collider2D>();
-        Physics2D.OverlapCollider(attackCollider, playerFilter, resultList);
+        attackCollider.OverlapCollider(playerFilter, resultList);
         foreach (var result in resultList)
         {
             result.GetComponent<IDamageable>()?.TakeDamage(attackDamage);
@@ -126,10 +133,6 @@ public class Fish : MonoBehaviour
     /// </summary>
     protected virtual void ChasePlayer()
     {
-        // TODO
-        // Detect Player From eyes not center
-        // // Flip Sprite so no upside down
-
         if (!GroundBetweenPlayer(chasingRange))
         {
             playerLastSeenAtPos = player.position;
@@ -144,6 +147,7 @@ public class Fish : MonoBehaviour
         }
 
         float speed = swimSpeed * currentExhaustAmount;
+        if (isMouthOpen) speed = speed += speedBoostWhileMouthOpen;
         if (exhausted) speed = Mathf.Clamp(speed, minSpeedWhileExhausted, maxSwimSpeed);
 
         Vector2 moveDirection = (pointToMoveTo - (Vector2)transform.position).normalized;
@@ -152,14 +156,14 @@ public class Fish : MonoBehaviour
 
         if (Vector2.Distance(player.position, transform.position) <= attackStartRange)
         {
-            if (!isMouthOpen) OpenMouth();
+            if (!isMouthOpen && !exhausted) OpenMouth();
         }
         else if (isMouthOpen)
         {
             CloseMouth();
         }
 
-        if (isMouthOpen && Vector2.Distance(player.position, transform.position) <= attackEndRange)
+        if (isMouthOpen && attackCollider.IsTouchingLayers(playerLayer))
         {
             CloseMouth();
         }
