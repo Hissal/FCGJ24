@@ -8,7 +8,7 @@ public class credit : MonoBehaviour
 
     public void Credit()
     {
-        credits.SetActive(!credits.active);
+        credits.SetActive(!credits.activeInHierarchy);
     }
 
 }
