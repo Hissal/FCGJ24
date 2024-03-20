@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
         sprintRegenTimer = new Timer(this, (float totalTime) => StartCoroutine(RegenSprint()));
 
         currentHealth = maxHealth;
@@ -130,6 +131,7 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (currentHealth <= 0)
         {
             // Die
+            print("Took " + damageAmount + " Damage");
         }
     }
 }

@@ -7,9 +7,14 @@ public class Fish : MonoBehaviour
     enum FishState { Idle, Chasing }
     private FishState state;
 
+    [Header("Animations")]
+    [SerializeField] protected Animation attackAnimation;
+    [SerializeField] protected Animation swimAnimation;
+
     [Header("Attacks")]
     [SerializeField] protected Collider2D attackCollider;
-    [SerializeField] protected float attackRange = 2f;
+    [SerializeField] protected float attackStartRange = 4f;
+    [SerializeField] protected float attackEndRange = 1f;
     [SerializeField] protected float attackDamage = 1f;
     [SerializeField] protected float attackInterval = 3f;
 
@@ -40,6 +45,7 @@ public class Fish : MonoBehaviour
 
     protected Rigidbody2D rb;
     protected Transform player;
+    protected Animator anim;
 
     protected Timer exhaustTimer;
     protected Timer resetExhaustTimer;
@@ -51,6 +57,8 @@ public class Fish : MonoBehaviour
     protected Vector2 playerPosSnapshot;
     protected Vector2 playerLastSeenAtPos;
     private Timer playerPosSnapshotTImer;
+
+    protected bool isMouthOpen;
 
     private void Awake()
     {
@@ -95,10 +103,16 @@ public class Fish : MonoBehaviour
         }
     }
 
-    protected void DoAttack()
+    protected virtual void OpenMouth()
     {
-        //Play Attack Animation
+        anim.PlayInFixedTime(attackAnimation.name, 0, 1f);
+        anim.speed = 0;
+    }
 
+    protected void CloseMouth()
+    {
+        anim.speed = 1f;
+        anim.Play(swimAnimation.name);
         List<Collider2D> resultList = new List<Collider2D>();
         Physics2D.OverlapCollider(attackCollider, playerFilter, resultList);
         foreach (var result in resultList)
@@ -135,6 +149,20 @@ public class Fish : MonoBehaviour
         Vector2 moveDirection = (pointToMoveTo - (Vector2)transform.position).normalized;
         rb.velocity = moveDirection * speed;
         RotateInDirectionOfMovement(moveDirection);
+
+        if (Vector2.Distance(player.position, transform.position) <= attackStartRange)
+        {
+            if (!isMouthOpen) OpenMouth();
+        }
+        else if (isMouthOpen)
+        {
+            CloseMouth();
+        }
+
+        if (isMouthOpen && Vector2.Distance(player.position, transform.position) <= attackEndRange)
+        {
+            CloseMouth();
+        }
     }
 
     private void MovePointToMoveToAwayFromWalls()
