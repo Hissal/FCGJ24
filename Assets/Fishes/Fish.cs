@@ -11,6 +11,7 @@ public class Fish : MonoBehaviour
     [SerializeField] protected float startingSwimSpeed = 0.5f;
     [SerializeField] protected float acceleration = 0.034f;
     protected float swimSpeed;
+    [SerializeField] private Transform detectionCircleCenter;
     [SerializeField] protected float detectionRange = 7.5f;
     [SerializeField] protected float chasingRange = 10f;
     [SerializeField] protected float exhaustInSeconds = 7.5f;
@@ -18,6 +19,8 @@ public class Fish : MonoBehaviour
     [SerializeField] protected float exhaustMultiplier = 0.99f;
     [SerializeField] protected float minSpeedWhileExhausted = 2f;
     protected float currentExhaustAmount = 1;
+
+    [SerializeField] private float pointToMoveToDistFromWalls = 2f;
 
     protected float groundDetectionRange;
 
@@ -53,7 +56,7 @@ public class Fish : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Physics2D.OverlapCircle(transform.position, detectionRange, playerLayer) && state != FishState.Chasing && !GroundBetweenPlayer(detectionRange))
+        if (Physics2D.OverlapCircle(detectionCircleCenter.position, detectionRange, playerLayer) && state != FishState.Chasing && !GroundBetweenPlayer(detectionRange))
         {
             StartChasingPlayer();
         }
@@ -62,8 +65,6 @@ public class Fish : MonoBehaviour
         {
             StopChasingPlayer();
         }
-
-        print(GroundBetweenPlayer(chasingRange));
     }
 
     protected virtual void FixedUpdate()
@@ -94,12 +95,13 @@ public class Fish : MonoBehaviour
         {
             playerLastSeenAtPos = player.position;
             pointToMoveTo = playerLastSeenAtPos;
-            if (!playerPosSnapshotTImer.active) playerPosSnapshotTImer.StartTimer(1f);
+            //if (!playerPosSnapshotTImer.active) playerPosSnapshotTImer.StartTimer(1f);
         }
         else
         {
-            if (Vector2.Distance(transform.position, playerPosSnapshot) <= 0.25f) pointToMoveTo = playerLastSeenAtPos;
-            else pointToMoveTo = playerPosSnapshot;
+            //if (Vector2.Distance(transform.position, playerPosSnapshot) <= 0.25f) pointToMoveTo = playerLastSeenAtPos;
+            //else pointToMoveTo = playerPosSnapshot;
+            MovePointToMoveToAwayFromWalls();
         }
 
         float speed = swimSpeed * currentExhaustAmount;
@@ -109,6 +111,74 @@ public class Fish : MonoBehaviour
         rb.velocity = moveDirection * speed;
         RotateInDirectionOfMovement(moveDirection);
     }
+
+    private void MovePointToMoveToAwayFromWalls()
+    {
+        // Up Right
+        RaycastHit2D hitUpRight = Physics2D.Raycast(pointToMoveTo, (Vector2.up + Vector2.right).normalized, 1f, groundLayer);
+        if (hitUpRight.collider != null)
+        {
+            pointToMoveTo += (Vector2.down + Vector2.left).normalized * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Up Left
+        RaycastHit2D hitUpLeft = Physics2D.Raycast(pointToMoveTo, (Vector2.up + Vector2.left).normalized, 1f, groundLayer);
+        if (hitUpRight.collider != null)
+        {
+            pointToMoveTo += (Vector2.down + Vector2.right).normalized * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Down Right
+        RaycastHit2D hitDownRight = Physics2D.Raycast(pointToMoveTo, (Vector2.down + Vector2.right).normalized, 1f, groundLayer);
+        if (hitUpRight.collider != null)
+        {
+            pointToMoveTo += (Vector2.up + Vector2.left).normalized * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Down Left
+        RaycastHit2D hitDownLeft = Physics2D.Raycast(pointToMoveTo, (Vector2.down + Vector2.left).normalized, 1f, groundLayer);
+        if (hitUpRight.collider != null)
+        {
+            pointToMoveTo += (Vector2.up + Vector2.right).normalized * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Up
+        RaycastHit2D hitUp = Physics2D.Raycast(pointToMoveTo, Vector2.up, 1f, groundLayer);
+        if (hitUp.collider != null)
+        {
+            pointToMoveTo += Vector2.down * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Down
+        RaycastHit2D hitDown = Physics2D.Raycast(pointToMoveTo, Vector2.down, 1f, groundLayer);
+        if (hitDown.collider != null)
+        {
+            pointToMoveTo += Vector2.up * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Right
+        RaycastHit2D hitRight = Physics2D.Raycast(pointToMoveTo, Vector2.right, 1f, groundLayer);
+        if (hitDown.collider != null)
+        {
+            pointToMoveTo += Vector2.left * pointToMoveToDistFromWalls;
+            return;
+        }
+
+        // Left
+        RaycastHit2D hitLeft = Physics2D.Raycast(pointToMoveTo, Vector2.left, 1f, groundLayer);
+        if (hitDown.collider != null)
+        {
+            pointToMoveTo += Vector2.right * pointToMoveToDistFromWalls;
+            return;
+        }
+    }
+
     /// <summary>
     /// Called once when player enters detection range (Sets state to Chasing and starts exhaustTimer)
     /// </summary>
@@ -176,7 +246,7 @@ public class Fish : MonoBehaviour
         if (state == FishState.Chasing) Gizmos.color = Color.red;
         else Gizmos.color = Color.magenta;
         if (exhausted) Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(detectionCircleCenter.position, detectionRange);
 
         if (state == FishState.Chasing) Gizmos.color = Color.red;
         else Gizmos.color = Color.green;

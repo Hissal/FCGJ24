@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
             sprintRegenTimer.KillTimer();
         }
 
-        sprintBar.fillAmount = sprintLeft / 100f;
+        if (sprintBar != null) sprintBar.fillAmount = sprintLeft / 100f;
     }
 
     private void FixedUpdate()
