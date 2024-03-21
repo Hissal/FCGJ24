@@ -23,10 +23,11 @@ public class PlayerController : MonoBehaviour, IDamageable
    // public float sprintRegenAmount = 5f;
    // private float sprintLeft = 100;
     private bool sprinting;
-   // private bool regeningSprint;
-   // private Timer sprintRegenTimer;
+    // private bool regeningSprint;
+    // private Timer sprintRegenTimer;
 
     [Header("Breath")]
+    [SerializeField] private float amountOfBreathGainedFromBubbles = 20f;
     [SerializeField] private Image breathBar;
     [SerializeField] private float maxBreath;
     [SerializeField] private float breathLostPerSecond = 1f;
@@ -64,19 +65,35 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (breathBar == null) breathBar = GameManager.Instance.BreathBar;
     }
 
-   // private IEnumerator RegenSprint()
-   // {
-   //    // regeningSprint = true;
-   //
-   //    // while (sprintLeft != 100f && !sprinting)
-   //    // {
-   //    //     sprintLeft += sprintRegenAmount * Time.deltaTime;
-   //    //     if (sprintLeft > 100f) sprintLeft = 100f;
-   //    //     yield return null;
-   //    // }
-   //    //
-   //    // regeningSprint = false;
-   // }
+    // private IEnumerator RegenSprint()
+    // {
+    //    // regeningSprint = true;
+    //
+    //    // while (sprintLeft != 100f && !sprinting)
+    //    // {
+    //    //     sprintLeft += sprintRegenAmount * Time.deltaTime;
+    //    //     if (sprintLeft > 100f) sprintLeft = 100f;
+    //    //     yield return null;
+    //    // }
+    //    //
+    //    // regeningSprint = false;
+    // }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("bubble"))
+        {
+            currentBreath += amountOfBreathGainedFromBubbles;
+            collision.gameObject.SetActive(false);
+            StartCoroutine(ActivateBubbleWithDelay(collision.gameObject, 20f));
+        }
+    }
+
+    private IEnumerator ActivateBubbleWithDelay(GameObject bubble, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        bubble.SetActive(true);
+    }
 
     private void Update()
     {
