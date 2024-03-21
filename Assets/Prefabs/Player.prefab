@@ -157,14 +157,18 @@ MonoBehaviour:
   idleAnim: {fileID: 7400000, guid: 0535cfa64c9b649fb8f201645fc3fdc3, type: 2}
   swimAnim: {fileID: 7400000, guid: 9f8f66631bdf643e7a9df33c7de21778, type: 2}
   deadAnim: {fileID: 7400000, guid: fc1ed1c0b393d4fada17bff35ef13e68, type: 2}
+  bubblePickupSound: {fileID: 8300000, guid: 9932ce8d9a687493f9b296c52a3879e1, type: 3}
+  ouchSound: {fileID: 8300000, guid: 738a23f730a1d4e2da4d18451c42e5c8, type: 3}
+  deathSound: {fileID: 8300000, guid: c46572bbc42314ff3926b0c3a4c9de80, type: 3}
   softMaxVelocity: 5
   hardMaxVelocity: 12
   swimSpeed: 10
   rotationSpeed: 5
   breathLossSprintingMultiplier: 5
+  amountOfBreathGainedFromBubbles: 25
   breathBar: {fileID: 0}
   maxBreath: 100
-  breathLostPerSecond: 1
+  breathLostPerSecond: 1.2
 --- !u!50 &7096695408908168223
 Rigidbody2D:
   serializedVersion: 4
@@ -224,8 +228,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.017553687, y: 0.0499506}
-  m_Size: {x: 0.6380837, y: 2.7514553}
+  m_Offset: {x: 0.017553687, y: 0.12862074}
+  m_Size: {x: 0.6380837, y: 1.4927323}
   m_Direction: 0
 --- !u!82 &3085063293208506488
 AudioSource:

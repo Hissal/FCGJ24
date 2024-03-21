@@ -28,7 +28,7 @@ public class jellymovment : MonoBehaviour
         {
             rb.AddForce(Vector2.up * bobForceAmount, ForceMode2D.Impulse);
             yield return new WaitWhile(() => transform.position.y > startPos.y);
-            yield return new WaitForSeconds(bobCooldown);
+            yield return new WaitForSeconds(Random.Range(bobCooldown - bobCooldown * 0.5f, bobCooldown * 2));
         }
     }
 

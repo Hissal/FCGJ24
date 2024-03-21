@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private AnimationClip swimAnim;
     [SerializeField] private AnimationClip deadAnim;
     [SerializeField] private AudioClip bubblePickupSound;
+    [SerializeField] private AudioClip ouchSound;
+    [SerializeField] private AudioClip deathSound;
 
     [Header("Movement")]
     [SerializeField] private float softMaxVelocity = 5f;
@@ -154,9 +156,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         if (currentBreath <= 0 && isDead == false)
         {
             // Die
+            audioSource.PlayOneShot(deathSound);
             print("Died");
             isDead = true;
             animator.Play(deadAnim.name);
+            StartCoroutine(LoadOutroWIthDelay(2));
             return;
         }
 
@@ -165,6 +169,12 @@ public class PlayerController : MonoBehaviour, IDamageable
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
         if (movementInput != Vector2.zero) Move();
         if (movementInput != Vector2.zero) RotateInDirectionOfInput();
+    }
+
+    IEnumerator LoadOutroWIthDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
 
     private void Move()
@@ -197,6 +207,8 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damageAmount, Vector2 knockBackForce)
     {
+        audioSource.PlayOneShot(ouchSound);
+
         StartCoroutine(FlashRed());
 
         stunned = true;
@@ -211,7 +223,7 @@ public class PlayerController : MonoBehaviour, IDamageable
 
         IEnumerator FlashRed()
         {
-            rend.color = Color.blue;
+            rend.color = Color.red;
             yield return new WaitForSeconds(0.1f);
             rend.color = Color.white;
         }

@@ -10,6 +10,7 @@ public class WinCollider : MonoBehaviour
         {
             // Win Code Goes Here
             print("WIN");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         }
     }
 }
