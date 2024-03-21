@@ -5,14 +5,8 @@ using UnityEngine;
 public class exit : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public void QuiteGame()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Application.Quit();
     }
 }
