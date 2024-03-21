@@ -8,6 +8,8 @@ public class Fish : MonoBehaviour
     private FishState state;
 
     [SerializeField] protected Animator anim;
+    [SerializeField] protected AudioClip sharkBite;
+    protected AudioSource audioSrc;
 
     [Header("Animations")]
     [SerializeField] protected AnimationClip attackAnimation;
@@ -65,6 +67,7 @@ public class Fish : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSrc = GetComponent<AudioSource>();
 
         player = GameManager.Instance.player;
 

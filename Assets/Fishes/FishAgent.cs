@@ -9,6 +9,8 @@ public class FishAgent : MonoBehaviour
     private FishState state;
 
     [SerializeField] protected Animator anim;
+    [SerializeField] protected AudioClip sharkBite;
+    protected AudioSource audioSrc;
 
     [Header("Animations")]
     [SerializeField] protected AnimationClip attackAnimation;
@@ -70,6 +72,7 @@ public class FishAgent : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody2D>();
+        audioSrc = GetComponent<AudioSource>();
 
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -132,7 +135,11 @@ public class FishAgent : MonoBehaviour
         List<Collider2D> resultList = new List<Collider2D>();
         attackCollider.OverlapCollider(playerFilter, resultList);
 
-        if (resultList.Count > 0) exhaustTimer.FinishTimer();
+        if (resultList.Count > 0)
+        {
+            exhaustTimer.FinishTimer();
+            audioSrc.PlayOneShot(sharkBite);
+        }
 
         foreach (var result in resultList)
         {

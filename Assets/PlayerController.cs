@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, IDamageable
     [SerializeField] private AnimationClip idleAnim;
     [SerializeField] private AnimationClip swimAnim;
     [SerializeField] private AnimationClip deadAnim;
+    [SerializeField] private AudioClip bubblePickupSound;
 
     [Header("Movement")]
     [SerializeField] private float softMaxVelocity = 5f;
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour, IDamageable
             currentBreath += amountOfBreathGainedFromBubbles;
             collision.gameObject.SetActive(false);
             StartCoroutine(ActivateBubbleWithDelay(collision.gameObject, 20f));
+            audioSource.PlayOneShot(bubblePickupSound);
         }
     }
 
