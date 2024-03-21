@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour, IDamageable
 {
+    [SerializeField] private AnimationClip idleAnim;
+    [SerializeField] private AnimationClip swimAnim;
+    [SerializeField] private AnimationClip deadAnim;
+
     [Header("Movement")]
     [SerializeField] private float softMaxVelocity = 5f;
     [SerializeField] private float hardMaxVelocity = 12f;
@@ -38,15 +42,19 @@ public class PlayerController : MonoBehaviour, IDamageable
     private Rigidbody2D rb;
     private AudioSource audioSource;
     private SpriteRenderer rend;
+    private Animator animator;
 
     private bool stunned;
     private Timer stunTimer;
+
+    private bool isDead;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
         rend = GetComponentInChildren<SpriteRenderer>();
+        animator = GetComponentInChildren<Animator>();
 
        // sprintRegenTimer = new Timer(this, (float totalTime) => StartCoroutine(RegenSprint()));
         stunTimer = new Timer(this, (float totalTime) => stunned = false);
@@ -72,14 +80,27 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     private void Update()
     {
-        if (stunned) return;
+        if (isDead)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, 0), 0.1f);
+        }
+
+        if (stunned || isDead) return;
 
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
         movementInput = new Vector2(inputX, inputY);
 
-        if (movementInput == Vector2.zero) audioSource.volume = 0f;
-        else audioSource.volume = 1f;
+        if (movementInput == Vector2.zero)
+        {
+            audioSource.volume = 0f;
+            animator.SetBool("Moving", false);
+        }
+        else
+        {
+            audioSource.volume = 1f;
+            animator.SetBool("Moving", true);
+        }
 
         CheckSprint();
         //print(sprintLeft);
@@ -111,14 +132,16 @@ public class PlayerController : MonoBehaviour, IDamageable
         currentBreath -= breathLoss;
         breathBar.fillAmount = currentBreath / maxBreath;
 
-        if (currentBreath <= 0)
+        if (currentBreath <= 0 && isDead == false)
         {
             // Die
             print("Died");
+            isDead = true;
+            animator.Play(deadAnim.name);
             return;
         }
 
-        if (stunned) return;
+        if (stunned || isDead) return;
 
         smoothedMovementInput = Vector2.SmoothDamp(smoothedMovementInput, movementInput, ref movementInputSmoothVelocity, 0.1f);
         if (movementInput != Vector2.zero) Move();
