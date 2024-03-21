@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 353583100, guid: 07273f0d9af2a47fc9e39076abe279fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -154,14 +154,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6321dcfeca70e414d8dd3e06d859fc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleAnim: {fileID: 7400000, guid: 0535cfa64c9b649fb8f201645fc3fdc3, type: 2}
+  swimAnim: {fileID: 7400000, guid: 9f8f66631bdf643e7a9df33c7de21778, type: 2}
+  deadAnim: {fileID: 7400000, guid: fc1ed1c0b393d4fada17bff35ef13e68, type: 2}
   softMaxVelocity: 5
   hardMaxVelocity: 12
   swimSpeed: 10
   rotationSpeed: 5
-  sprintBar: {fileID: 0}
-  sprintDrainAmount: 1
-  regenSprintAfterSeconds: 2
-  sprintRegenAmount: 50
+  breathLossSprintingMultiplier: 5
   breathBar: {fileID: 0}
   maxBreath: 100
   breathLostPerSecond: 1
@@ -237,7 +237,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f21ea39630d45492c9ecc94e8d14729d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0beed9ed3fce6440f884852297fd66ca, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

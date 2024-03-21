@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Test : MonoBehaviour
+public class FishAgent : MonoBehaviour
 {
     enum FishState { Idle, Chasing }
     private FishState state;
@@ -63,7 +63,7 @@ public class Test : MonoBehaviour
 
     protected bool isMouthOpen;
 
-    [SerializeField] Transform target;
+    // [SerializeField] Transform target;
     private NavMeshAgent agent;
 
     private void Awake()
@@ -96,6 +96,7 @@ public class Test : MonoBehaviour
         if (state == FishState.Chasing && !Physics2D.OverlapCircle(transform.position, chasingRange, playerLayer))
         {
             StopChasingPlayer();
+            // TODO add random movement to idle state
         }
     }
 
@@ -124,16 +125,18 @@ public class Test : MonoBehaviour
 
     protected void CloseMouth()
     {
-        exhaustTimer.FinishTimer();
         print("Close Mouth");
         isMouthOpen = false;
         anim.speed = 1f;
         anim.Play(swimAnimation.name);
         List<Collider2D> resultList = new List<Collider2D>();
         attackCollider.OverlapCollider(playerFilter, resultList);
+
+        if (resultList.Count > 0) exhaustTimer.FinishTimer();
+
         foreach (var result in resultList)
         {
-            result.GetComponent<IDamageable>()?.TakeDamage(attackDamage, rb.velocity.normalized * attackKnockBackForce);
+            result.GetComponent<IDamageable>()?.TakeDamage(attackDamage, agent.velocity.normalized * attackKnockBackForce);
         }
     }
 
@@ -160,6 +163,8 @@ public class Test : MonoBehaviour
             //if (Vector2.Distance(transform.position, playerPosSnapshot) <= 0.25f) pointToMoveTo = playerLastSeenAtPos;
             //else pointToMoveTo = playerPosSnapshot;
             // MovePointToMoveToAwayFromWalls();
+
+            if (Vector2.Distance(pointToMoveTo, (Vector2)transform.position) < 0.05f) StopChasingPlayer();
         }
 
         float speed = swimSpeed * currentExhaustAmount;
@@ -301,7 +306,7 @@ public class Test : MonoBehaviour
     protected bool GroundBetweenPlayerAndPos(Vector2 position, float range)
     {
         RaycastHit2D hitPlayer = Physics2D.Raycast(position, ((Vector2)player.position - position).normalized, range, playerLayer);
-        RaycastHit2D hitGround = Physics2D.Raycast(position, ((Vector2)player.position - position).normalized, range, groundLayer);
+        RaycastHit2D hitGround = Physics2D.Raycast(position, ((Vector2)player.position - position).normalized, Vector2.Distance(transform.position, player.position), groundLayer);
 
         if (hitGround.collider != null) return true;
         else if (hitPlayer.collider != null) return false;
